@@ -9,18 +9,27 @@
       }
     },
     {
-      "src": "apps/backend/api/**/*.js",
-      "use": "@vercel/node"
+      "src": "apps/backend/package.json",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": ["dist/**"]
+      }
     }
   ],
+  "functions": {
+    "apps/backend/api/**/*.ts": {
+      "runtime": "@vercel/node"
+    }
+  },
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "/apps/backend/api/$1"
+      "dest": "/apps/backend/dist/src/index.js"
     },
     {
       "src": "/(.*)",
       "dest": "/apps/frontend/dist/$1"
     }
-  ]
+  ],
+  "rewrites": []
 }
