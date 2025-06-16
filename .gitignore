@@ -2,10 +2,12 @@ apps/frontend/node_modules
 apps/frontend/dist
 apps/frontend/dist-ssr
 apps/frontend/*.local
+apps/frontend/bun.lock
 
 apps/backend/node_modules
 apps/backend/dist
 apps/backend/dist-ssr
+apps/backend/bun.lock
 
 
 # Editor directories and files
