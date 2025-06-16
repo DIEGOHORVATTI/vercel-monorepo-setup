@@ -1,12 +1,14 @@
 {
   "name": "backend",
   "version": "0.0.1",
-  "main": "dist/index.js",
+  "main": "dist/src/index.js",
   "author": "Specc",
   "license": "MIT",
   "private": false,
   "type": "module",
   "dependencies": {
+    "@swc/cli": "^0.7.7",
+    "@swc/core": "^1.3.102",
     "copyfiles": "2.4.1",
     "cors": "^2.8.5",
     "express": "5.1.0"
@@ -21,9 +23,9 @@
   },
   "scripts": {
     "dev": "bun run --watch src/index.ts",
-    "build": "tsc -p tsconfig.json",
+    "build": "swc src -d dist --source-maps",
     "postbuild": "copyfiles -u 1 public/**/* dist/public",
-    "start": "node ./dist/index.js",
+    "start": "node ./dist/src/index.js",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix"
   }
