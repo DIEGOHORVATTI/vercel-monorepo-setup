@@ -1,0 +1,15 @@
+{
+  "name": "backend",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'No build step required for Vercel Functions'"
+  },
+  "dependencies": {
+    "@vercel/node": "^3.0.0"
+  },
+  "devDependencies": {
+    "vercel": "^33.0.0"
+  }
+}
