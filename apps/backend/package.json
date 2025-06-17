@@ -19,6 +19,6 @@
   "scripts": {
     "dev": "bun run --watch api/index.ts",
     "start": "node public/index.js",
-    "build": "tsc -p tsconfig.json"
+    "build": "tsc"
   }
 }
