@@ -21,8 +21,6 @@ const limiter = rateLimit({
 
 const app = express()
 
-console.log(`Running in development mode ${process.env.NODE_ENV}`)
-
 app.use(limiter)
 app.set('trust proxy', 1)
 app.use(helmet())
