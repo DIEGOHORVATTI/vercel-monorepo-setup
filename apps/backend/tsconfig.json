@@ -2,11 +2,11 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "outDir": "public",
-    "baseUrl": "api",
-    "rootDir": "api",
+    "baseUrl": "src",
+    "rootDir": "src",
     "paths": {
       "@/*": ["*"]
     }
   },
-  "include": ["api", "package.json"]
+  "include": ["src", "package.json"]
 }
