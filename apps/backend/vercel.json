@@ -1,17 +1,16 @@
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
   "version": 2,
-  "functions": {
-    "public/index.js": {
-      "runtime": "@vercel/node@3.0.0",
-      "includeFiles": "public/**"
-    }
-  },
   "buildCommand": "cd apps/backend && bun run build",
+  "builds": [
+    {
+      "src": "apps/backend/public/index.js",
+      "use": "@vercel/node"
+    }
+  ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "public/index.js"
+      "dest": "apps/backend/public/index.js"
     }
   ]
 }
