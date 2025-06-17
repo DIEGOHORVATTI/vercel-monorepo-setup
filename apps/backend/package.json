@@ -20,7 +20,6 @@
   },
   "scripts": {
     "dev": "bun run --watch api/index.ts",
-    "build": "bun run build",
     "start": "bun run api/index.ts"
   }
 }
