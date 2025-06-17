@@ -1,23 +1,14 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
+    "target": "ES2020",
     "module": "CommonJS",
+    "lib": ["ESNext"],
     "outDir": "dist",
-    "baseUrl": "api",
-    "rootDir": "api",
     "strict": true,
     "esModuleInterop": true,
-    "resolveJsonModule": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    "incremental": true,
-    "allowJs": true,
-    "removeComments": true,
-    "paths": {
-      "@/*": ["*"]
-    }
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true
   },
-  "include": ["api", "package.json"]
+  "include": ["api/**/*.ts"]
 }

@@ -1,5 +1,6 @@
-import express, { Request, Response } from 'express';
+import express from 'express';
 import cors from 'cors';
+import serverless from 'serverless-http';
 
 const app = express();
 
@@ -13,12 +14,9 @@ app.use(
     methods: ['GET', 'POST', 'PUT', 'DELETE']
   })
 );
-const port = 3000;
 
-app.get('/', (req: Request, res: Response) => {
-  res.send('Hello World');
+app.get('/', (req, res) => {
+  res.send('Hello World from Vercel Serverless Express!');
 });
 
-app.listen(port, () => {
-  console.log(`🚀 Server running at http://localhost:${port}`);
-});
+export default serverless(app);
