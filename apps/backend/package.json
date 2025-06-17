@@ -18,7 +18,7 @@
   },
   "scripts": {
     "dev": "bun run --watch src/index.ts",
-    "start": "node public/index.js",
+    "start": "tsc && node public/index.js",
     "build": "tsc"
   }
 }
