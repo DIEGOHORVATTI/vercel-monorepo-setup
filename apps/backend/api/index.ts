@@ -1,12 +1,10 @@
 import express from 'express';
 import cors from 'cors';
-import serverless from 'serverless-http';
 
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
 app.use(
   cors({
     origin: '*',
@@ -16,7 +14,11 @@ app.use(
 );
 
 app.get('/', (req, res) => {
-  res.send('Hello World from Vercel Serverless Express!');
+  res.send('Hello World!');
 });
 
-export default serverless(app);
+const port = process.env.PORT || 3000;
+
+app.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}`);
+});
