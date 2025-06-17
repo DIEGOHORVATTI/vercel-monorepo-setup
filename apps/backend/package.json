@@ -1,17 +1,22 @@
 {
   "name": "backend-vercel",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "scripts": {
     "dev": "vercel dev",
-    "start": "node dist/index.js",
+    "dev:ts": "bun run --watch api/index.ts",
+    "start": "tsc && node dist/index.js",
     "build": "tsc"
   },
   "dependencies": {
+    "cookie-parser": "^1.4.7",
     "cors": "2.8.5",
     "express": "5.1.0",
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^8.1.0",
     "serverless-http": "^3.2.0"
   },
   "devDependencies": {
+    "@types/cookie-parser": "^1.4.9",
     "@types/cors": "2.8.19",
     "@types/express": "5.0.3",
     "@vercel/node": "5.2.2",

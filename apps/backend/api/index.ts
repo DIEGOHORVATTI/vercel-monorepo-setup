@@ -1,24 +1,49 @@
 import express from 'express';
+
 import cors from 'cors';
+import cookieParser from 'cookie-parser';
+
+import rateLimit from 'express-rate-limit';
+import helmet from 'helmet';
 
 const app = express();
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+const port = process.env.PORT || '3000';
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+  message: {
+    status: 'error',
+    message: 'Too many requests from this IP, please try again after 15 minutes'
+  },
+  standardHeaders: true,
+  legacyHeaders: false
+});
+
+app.use(limiter);
+app.use(helmet());
+app.use('/images', express.static('./images'));
 app.use(
   cors({
-    origin: '*',
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    methods: ['GET', 'POST', 'PUT', 'DELETE']
+    origin: ['http://localhost:3000', 'https://your-production-domain.com'],
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+    credentials: true,
+    optionsSuccessStatus: 200
   })
 );
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
+app.use(express.json({ limit: '10kb' }));
+app.use(cookieParser());
 
-const port = process.env.PORT || 3000;
+app.get('/', (req, res) => {
+  res.status(200).json({
+    message: 'this is vercel deploy message'
+  });
+});
 
 app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
+  console.log(`Server is running at port ${port}`);
 });
+
+export default app;
