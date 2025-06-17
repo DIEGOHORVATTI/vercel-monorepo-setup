@@ -27,7 +27,7 @@ app.use(helmet())
 app.use('/images', express.static('./images'))
 app.use(
   cors({
-    origin: ['http://localhost:3000', 'https://your-production-domain.com'],
+    origin: [`http://localhost:${port}`, 'https://your-production-domain.com'],
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     credentials: true,
     optionsSuccessStatus: 200
@@ -39,7 +39,7 @@ app.use(cookieParser())
 
 app.get('/', (req, res) => {
   res.status(200).json({
-    message: 'this is vercel deploy message'
+    message: 'ola 2023'
   })
 })
 

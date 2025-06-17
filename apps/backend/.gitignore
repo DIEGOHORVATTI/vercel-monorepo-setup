@@ -5,6 +5,8 @@ dist
 dist-ssr
 public
 ./public
+tsconfig.tsbuildinfo
+./tsconfig.tsbuildinfo
 
 # Editor directories and files
 .vscode/*
