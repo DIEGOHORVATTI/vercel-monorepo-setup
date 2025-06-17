@@ -1,16 +1,17 @@
 {
   "version": 2,
-  "buildCommand": "cd apps/backend && bun run build",
   "builds": [
     {
-      "src": "apps/backend/public/index.js",
-      "use": "@vercel/node"
+      "src": "public/index.js",
+      "use": "@vercel/node",
+      "config": { "includeFiles": ["public/**"] }
     }
   ],
+  "buildCommand": "cd apps/backend && bun run build",
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "apps/backend/public/index.js"
+      "dest": "public/index.js"
     }
   ]
 }
