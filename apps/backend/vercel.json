@@ -1,13 +1,16 @@
 {
   "version": 2,
   "builds": [
-    { "src": "package.json", "use": "@vercel/static-build", "config": { "distDir": "public" } },
-    { "src": "public/*.js", "use": "@vercel/node" }
-  ],
-  "rewrites": [
     {
-      "source": "/(.*)",
-      "destination": "/public/index.js"
+      "src": "public/src/index.js",
+      "use": "@vercel/node",
+      "config": { "includeFiles": ["public/**"] }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "public/src/index.js"
     }
   ]
 }
