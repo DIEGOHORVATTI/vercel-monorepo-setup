@@ -1,7 +1,10 @@
 .vercel
 node_modules
 dist
+./dist
 dist-ssr
+public
+./public
 
 # Editor directories and files
 .vscode/*
