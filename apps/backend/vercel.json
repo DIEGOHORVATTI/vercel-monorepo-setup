@@ -1,17 +1,13 @@
 {
   "version": 2,
   "builds": [
-    {
-      "src": "public/index.js",
-      "use": "@vercel/node",
-      "config": { "includeFiles": ["public/**"] }
-    }
+    { "src": "package.json", "use": "@vercel/static-build", "config": { "distDir": "public" } },
+    { "src": "public/*.js", "use": "@vercel/node" }
   ],
-  "buildCommand": "cd apps/backend && bun run build",
-  "routes": [
+  "rewrites": [
     {
-      "src": "/(.*)",
-      "dest": "public/index.js"
+      "source": "/(.*)",
+      "destination": "/public/index.js"
     }
   ]
 }
