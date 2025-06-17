@@ -4,8 +4,8 @@
   "scripts": {
     "dev": "vercel dev",
     "dev:ts": "bun run --watch api/index.ts",
-    "start": "tsc && node dist/index.js",
-    "build": "tsc"
+    "start": "node public/index.js",
+    "build": "tsc -p tsconfig.json"
   },
   "dependencies": {
     "cookie-parser": "^1.4.7",

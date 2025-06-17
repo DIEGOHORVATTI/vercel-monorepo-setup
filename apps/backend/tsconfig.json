@@ -3,7 +3,7 @@
     "target": "ES2020",
     "module": "CommonJS",
     "lib": ["ESNext"],
-    "outDir": "dist",
+    "outDir": "public",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
