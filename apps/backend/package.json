@@ -2,6 +2,8 @@
   "name": "backend-vercel",
   "version": "0.0.1",
   "dependencies": {
+    "@types/bun": "^1.2.16",
+    "bun": "^1.2.16",
     "cookie-parser": "1.4.7",
     "cors": "2.8.5",
     "express": "5.1.0",
@@ -18,7 +20,7 @@
   },
   "scripts": {
     "dev": "bun run --watch api/index.ts",
-    "start": "node public/index.js",
-    "build": "tsc"
+    "build": "bun run build",
+    "start": "bun run api/index.ts"
   }
 }
