@@ -1,7 +1,4 @@
 node_modules
-dist
-dist-ssr
-public
 tsconfig.tsbuildinfo
 ./tsconfig.tsbuildinfo
 
