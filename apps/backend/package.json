@@ -4,6 +4,6 @@
   "scripts": {
     "dev": "bun run --watch src/index.ts",
     "start": "tsc && node dist/index.js",
-    "build": "swc src -d dist "
+    "build": "swc src -d dist"
   }
 }
