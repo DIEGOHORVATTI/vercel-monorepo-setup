@@ -39,7 +39,7 @@ app.use(
 )
 
 app.get('/', (_req, res) => {
-  res.send('API is runningg 🚀')
+  res.send('API is running 🚀')
 })
 
 app.use(notFound)
