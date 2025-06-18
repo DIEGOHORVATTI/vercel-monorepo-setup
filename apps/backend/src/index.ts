@@ -11,7 +11,7 @@ import { exception, notFound } from './middlewares'
 
 import router from './router'
 
-const port = process.env.PORT || '3000'
+const port = process.env.PORT || 8000
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
@@ -26,13 +26,14 @@ const limiter = rateLimit({
 
 const app = express()
 
-app.use(limiter)
-app.set('trust proxy', 1)
 app.use(helmet())
+app.set('trust proxy', 1)
 app.use(express.json({ limit: '50mb' }))
 app.use(express.urlencoded({ extended: true }))
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms'))
+app.use(limiter)
 app.use(cookieParser())
+app.set('trust proxy', ['loopback', 'linklocal', 'uniquelocal'])
 app.use(
   cors({
     origin: '*',
@@ -41,8 +42,6 @@ app.use(
     credentials: true
   })
 )
-
-app.set('trust proxy', ['loopback', 'linklocal', 'uniquelocal'])
 
 app.use(router)
 
