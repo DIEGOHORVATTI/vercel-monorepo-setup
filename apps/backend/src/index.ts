@@ -1,6 +1,6 @@
 import express from 'express'
 
-const port = process.env.PORT || 8000
+const port = process.env.PORT || '8000'
 
 const app = express()
 
