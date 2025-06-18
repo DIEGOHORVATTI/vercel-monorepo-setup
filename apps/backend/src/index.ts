@@ -9,8 +9,6 @@ import helmet from 'helmet'
 
 import { exception, notFound } from './middlewares'
 
-import router from './router'
-
 const port = process.env.PORT || 8000
 
 const limiter = rateLimit({
@@ -43,7 +41,9 @@ app.use(
   })
 )
 
-app.use(router)
+app.get('/', (_req, res) => {
+  res.send('API is running 🚀')
+})
 
 app.use(notFound)
 app.use(exception)
