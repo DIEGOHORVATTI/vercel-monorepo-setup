@@ -1,34 +1,47 @@
 {
   "name": "backend",
-  "version": "1.0.0",
-  "pre-commit": [
-    "build",
-    "update-version"
-  ],
-  "dependencies": {
-    "cookie-parser": "^1.4.7",
-    "cors": "^2.8.5",
-    "express": "^5.1.0",
-    "express-rate-limit": "^7.5.0",
-    "helmet": "^8.1.0",
-    "morgan": "^1.10.0",
-    "serverless-http": "^3.2.0",
-    "swr": "^2.3.3"
-  },
+  "type": "commonjs",
+  "version": "0.1.0",
   "devDependencies": {
-    "@types/cookie-parser": "^1.4.9",
+    "@types/bcrypt": "^5.0.2",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
+    "@types/jsonwebtoken": "^9.0.10",
     "@types/morgan": "^1.9.10",
-    "@vercel/node": "^5.2.2",
-    "pre-commit": "^1.2.2",
-    "swc": "^1.0.11",
+    "@types/multer": "^1.4.13",
+    "@types/node": "^24.0.3",
+    "cpx": "^1.5.0",
+    "pre-commit": "^1.2.2"
+  },
+  "peerDependencies": {
     "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@swc/cli": "^0.7.7",
+    "@swc/core": "^1.12.1",
+    "axios": "^1.10.0",
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "handlebars": "^4.7.8",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.16.0",
+    "morgan": "^1.10.0",
+    "multer": "^2.0.1",
+    "translatte": "^3.0.1",
+    "zod": "^3.25.67"
   },
   "scripts": {
     "dev": "bun run --watch src/index.ts",
-    "start": "tsc && node dist/index.js",
-    "build": "swc src -d dist",
+    "start": "node dist/index.js",
+    "build": "swc src -d dist --source-maps",
+    "lint:fix": "eslint --fix --ext .ts,.tsx .",
+    "prettier": "prettier --config .prettierrc 'src/**/*.ts' --write",
     "update-version": "git add . && git push"
-  }
+  },
+  "pre-commit": [
+    "build",
+    "update-version"
+  ]
 }
