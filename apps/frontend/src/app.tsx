@@ -1,22 +1,22 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react'
 
 export default function App() {
-  const [message, setMessage] = useState<string>('');
+  const [message, setMessage] = useState<string>('')
 
   useEffect(() => {
     const fetchMessage = async () => {
-      const response = await fetch('http://localhost:3000');
+      const response = await fetch('/api')
 
       if (!response.ok) {
-        throw new Error('Failed to fetch message');
+        throw new Error('Failed to fetch message')
       }
 
-      const data = await response.text();
-      setMessage(data);
-    };
+      const data = await response.text()
+      setMessage(data)
+    }
 
-    fetchMessage();
-  }, []);
+    fetchMessage()
+  }, [])
 
   return (
     <span
@@ -33,5 +33,5 @@ export default function App() {
 
       <h1>{message}</h1>
     </span>
-  );
+  )
 }

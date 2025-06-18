@@ -1,10 +1,15 @@
 import express from 'express'
 
 import cors from 'cors'
+import morgan from 'morgan'
 import cookieParser from 'cookie-parser'
 
 import rateLimit from 'express-rate-limit'
 import helmet from 'helmet'
+
+import { exception, notFound } from './middlewares'
+
+import router from './router'
 
 const port = process.env.PORT || '3000'
 
@@ -24,24 +29,25 @@ const app = express()
 app.use(limiter)
 app.set('trust proxy', 1)
 app.use(helmet())
-app.use('/images', express.static('./images'))
+app.use(express.json({ limit: '50mb' }))
+app.use(express.urlencoded({ extended: true }))
+app.use(morgan(':method :url :status :res[content-length] - :response-time ms'))
+app.use(cookieParser())
 app.use(
   cors({
-    origin: [`http://localhost:${port}`, 'https://your-production-domain.com'],
-    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-    credentials: true,
-    optionsSuccessStatus: 200
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
   })
 )
 
-app.use(express.json({ limit: '10kb' }))
-app.use(cookieParser())
+app.set('trust proxy', ['loopback', 'linklocal', 'uniquelocal'])
 
-app.get('/', (req, res) => {
-  res.status(200).json({
-    message: 'ola 2023'
-  })
-})
+app.use(router)
+
+app.use(notFound)
+app.use(exception)
 
 app.listen(port, () => {
   console.log(`Server is running at port ${port}`)
